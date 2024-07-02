@@ -1,0 +1,11 @@
+Crear reglas de ejecución permitida para navegadores (manualmente configurar las reglas)
+
+Para ello se debe utilizar el Editor de directivas de seguridad local
+
+Ejecutar 'secpol.msc' e ir a 'Políticas de restricción de software' > 'Reglas adicionales'
+
+Agregar nuevas 'Reglas de hash' o 'Reglas de ruta' para cada navegador permitido
+
+Ejemplo de ruta: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+
+Ejemplo de hash: Seleccionar el ejecutable del navegador (Seleccionamos el ejecutable del navegador y se creará una regla basada en su hash.)
