@@ -5,7 +5,7 @@ import os
 import win32net
 import win32netcon
 import psutil
-import scriptDeRespaldo
+import parteB.scriptDeRespaldo as scriptDeRespaldo
 
 
 class User:

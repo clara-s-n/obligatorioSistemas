@@ -2,7 +2,7 @@ import datetime
 import os
 import win32net
 import win32netcon
-import scriptDeRespaldo
+import parteB.scriptDeRespaldo as scriptDeRespaldo
 import psutil
 import tkinter as tk
 from tkinter import messagebox, simpledialog
