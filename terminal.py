@@ -2,6 +2,7 @@ import datetime
 import os
 import win32net
 import win32netcon
+import scriptDeRespaldo
 
 class User:
     def __init__(self, name, group, last_access, has_backup):
@@ -75,29 +76,43 @@ def list_users():
         print(user)
 
 def consult_procesos():
+    """Deberá mostrar una lista de los procesos del Usuario especificado (datos a mostrar ID, 
+Nombre, % CPU y Estado) permitiendo eliminar o pausar a cualquiera de los procesos 
+listados.
+"""
+    # Mostrar lista de procesos del usuario logueado
+    # permitiendo eliminar o pausar a cualquiera de los procesos listados
+    
+    # 1. Obtener lista de procesos del usuario logueado
+    # 2. Mostrar lista de procesos con ID, Nombre, % CPU y Estado
+    # 3. Permitir eliminar o pausar a cualquiera de los procesos listados
+    
+    
+
+def realizar_respaldo():
+    # Mostrar lista de usuarios que no posean ningún respaldo
+    global users
+    users = get_users()
+    if not users:
+        print("No se encontraron usuarios")
+        return
+
+    print("Usuarios sin respaldo:")
+    for user in users:
+        if not user.has_backup:
+            print(user)
+    
+    # Seleccionar usuario que no tenga respaldo
     user_name = input("Ingresa el nombre del usuario: ")
     user = next((user for user in users if user.name == user_name), None)
     if user:
-        print(f"Procesos del usuario {user_name}:")
-        # Aquí deberías implementar la lógica para mostrar los procesos del usuario y permitir eliminar o pausar procesos
+        if user.has_backup:
+            print("El usuario ya tiene respaldo")
+        else:
+            # Realizar respaldo
+            scriptDeRespaldo.backup_user(user_name)
     else:
         print("Usuario no encontrado")
-
-def realizar_respaldo():
-    users_without_backup = [user for user in users if not user.has_backup]
-    if users_without_backup:
-        print("Usuarios sin respaldo:")
-        for user in users_without_backup:
-            print(user)
-        user_name = input("Ingresa el nombre del usuario que deseas respaldar: ")
-        user = next((user for user in users if user.name == user_name), None)
-        if user:
-            # Aquí deberías implementar la lógica para ejecutar el script de respaldo correspondiente
-            print(f"Respaldo realizado para el usuario {user_name}")
-        else:
-            print("Usuario no encontrado")
-    else:
-        print("No hay usuarios sin respaldo")
 
 if __name__ == "__main__":
     main()
