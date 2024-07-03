@@ -3,6 +3,7 @@ import os
 import win32net
 import win32netcon
 import scriptDeRespaldo
+import psutil
 
 class User:
     def __init__(self, name, group, last_access, has_backup):
@@ -74,20 +75,71 @@ def list_users():
     print("Lista de usuarios:")
     for user in users:
         print(user)
+    
+    # Mostrar opciones
+    input("Presiona Enter para continuar...")
+    mostrarMenu()
+
 
 def consult_procesos():
-    """Deberá mostrar una lista de los procesos del Usuario especificado (datos a mostrar ID, 
-Nombre, % CPU y Estado) permitiendo eliminar o pausar a cualquiera de los procesos 
-listados.
-"""
-    # Mostrar lista de procesos del usuario logueado
-    # permitiendo eliminar o pausar a cualquiera de los procesos listados
+    # Listar procesos
+    print("Lista de procesos:")
+    for process in psutil.process_iter():
+        try:
+            process_name = process.name()
+            process_id = process.pid
+            # Mostrar el consumo de CPU y estado del proceso
+            cpu_times = process.cpu_times()
+            process_status = process.status()
+            print(f"Nombre: {process_name}, ID: {process_id}, Tiempo de CPU usuario: {cpu_times.user}, Tiempo de CPU sistema: {cpu_times.system} Estado: {process_status}")
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess): # Ignorar errores
+            pass
     
-    # 1. Obtener lista de procesos del usuario logueado
-    # 2. Mostrar lista de procesos con ID, Nombre, % CPU y Estado
-    # 3. Permitir eliminar o pausar a cualquiera de los procesos listados
+    # Desplegar opciones
+    print("1. Consultar proceso")
+    print("2. Volver al menú principal")
+    option = input("Elige una opción: ")
+    if option == "1":
+        consultar_proceso()
+    elif option == "2":
+        mostrarMenu()
+    else:
+        print("Opción no válida")
+        
+        
+def consultar_proceso():
+    # Consultar proceso
+    process_id = input("Ingresa el ID del proceso: ")
+    process = next((process for process in psutil.process_iter() if process.pid == int(process_id)), None)
     
-    
+    if process:
+        print("Información del proceso:")
+        print(f"Nombre: {process.name()}")
+        print(f"ID: {process.pid}")
+        print(f"Tiempo de ejecución: {datetime.datetime.now() - datetime.datetime.fromtimestamp(process.create_time())}")
+        print(f"Usuario: {process.username()}")
+        print(f"Estado: {'Activo' if process.is_running() else 'Inactivo'}")
+        
+        # Mostrar opciones
+        print("1. Finalizar proceso")
+        print("2. Pausar proceso")
+        print("3. Volver al menú principal")
+        option = input("Elige una opción: ")
+        if option == "1":
+            process.terminate()
+            print("Proceso finalizado")
+        elif option == "2":
+            process.suspend()
+            print("Proceso pausado")
+        elif option == "3":
+            mostrarMenu()
+            return
+        else:
+            print("Opción no válida")
+            
+    else:
+        print("Proceso no encontrado")
+        
 
 def realizar_respaldo():
     # Mostrar lista de usuarios que no posean ningún respaldo
@@ -113,6 +165,14 @@ def realizar_respaldo():
             scriptDeRespaldo.backup_user(user_name)
     else:
         print("Usuario no encontrado")
+        
+def mostrarMenu():
+    print("\nSistema de Gestión de Procesos")
+    print("1. Listar Usuarios")
+    print("2. Consultar Procesos")
+    print("3. Realizar respaldo")
+    print("4. Salir")
+    return
 
 if __name__ == "__main__":
     main()
