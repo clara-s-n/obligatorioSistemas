@@ -3,7 +3,7 @@ $desktopPath = "C:\Users\$userName\Desktop"
 $comunicadosPath = "$desktopPath\Comunicados"
 $semanalPath = "$comunicadosPath\Semanal"
 $mensualPath = "$comunicadosPath\Mensual"
-$respaldoPath = "C:\Respaldo"
+$respaldoPath = "C:\Respaldo\$userName"
 $backupDate = (Get-Date).ToString("ddMMMyyyy").ToUpper()
 $backupPath = "$respaldoPath\$backupDate"
 

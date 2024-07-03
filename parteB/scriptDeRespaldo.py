@@ -14,7 +14,7 @@ def backup_user(username):
     
     if username == "Contaduria":
         source_dir = "C:\\Users\\Contaduria\\Desktop\\Asientos"
-    elif username == "Relaciones Publicas":
+    elif username == "RelacionesPublicas":
         source_dir = "C:\\Users\\Relaciones Publicas\\Desktop\\Comunicados"
     else:
         print("Usuario no válido")
