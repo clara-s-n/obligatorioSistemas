@@ -66,7 +66,7 @@ net localgroup ParteA Soporte /add
 net localgroup ParteA Recepcion /add
 net localgroup ParteA RelacionesPublicas /add
 ```
-![alt text](image.png)
+![alt text](parteB\image.png)
 
 2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
 
