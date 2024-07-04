@@ -1,7 +1,36 @@
-# obligatorioSistemas
+# Trabajo obligatorio final del grupo 03
 
+**Materia:** Sistemas Operativos
 
+**Fecha:** Julio de 2024
 
+## Integrantes:
+
+- Micolás Gómez
+- Ana Clara Sena
+- Juan Tanca
+
+---
+A partir de la consigna asignada, elaboramos soluciones según lo que se solicitaba siguiendo los conocimientos aprendidos en clase durante todo este semestre.  
+
+# Parte A:
+En primer lugar, se nos pedía crear distintos usuarios, cada uno de estos con especificaciones de seguridad distintas. Para cumplir esta consigna creamos distintos archivos en Powershell ISE de Windows.
+
+Este primer archivo tiene la tarea de, al ejecutarse, crear los distintos usuarios con sus nombres correspondientes: “Contaduría”, “Soporte”, también tenemos otros dos archivos encargados de la creación de los usuarios “Relaciones Públicas”, y “Recepción”, estos tres scripts son los primeros que deben ejecutarse. Todos estos usuarios quedarían validados una vez creados, pero para continuar con la consigna era necesario tener acceso a la dirección de los directorios de cada uno de los usuarios, por lo que es necesario reiniciar la computadora una vez ejecutado el primer script para que se formen automáticamente las carpetas y escritorios de cada usuario y que de esta manera puedan ser accesibles.  
+
+![Captura de pantalla](/parteA.1-2/resultadoCrearUsuarios.png)
+
+![Captura de pantalla](/parteA.3/resultadoScriptUsuario.png)
+
+![Captura de pantalla](/parteA.4/resultadoScriptUsuario.png)
+
+Una vez creados los usuarios y las carpetas de cada uno de estos, creamos otro script, o archivo .ps1 para el siguiente paso, el cual pedía crear ciertas carpetas dentro del escritorio del usuario “Contaduría”. También era necesario crear una carpeta en el directorio raíz, donde se guardarían los respaldos de los usuarios.
+
+Como se ve en el archivo "configuracionUsuarios.ps1", en la carpeta parteA.1-2, el programa verifica dentro del escritorio del usuario contaduría, si la carpeta “Asientos” existe, creándola si ese no es el caso. El proceso se repite para las otras dos carpetas dentro de esta.
+
+![Captura de pantalla](/parteA.1-2/resultadoConfiguracionDeUsuarios.png)
+
+---
 # Parte B:
 Versión de python: 3.12.4
 Verión de vscode: 1.90.2
@@ -66,7 +95,7 @@ net localgroup ParteA Soporte /add
 net localgroup ParteA Recepcion /add
 net localgroup ParteA RelacionesPublicas /add
 ```
-![Alt text](parteB\image.png)
+![Alt text](/parteB/image.png)
 
 2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
 
