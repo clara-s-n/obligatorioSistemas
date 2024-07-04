@@ -6,7 +6,7 @@
 
 ## Integrantes:
 
-- Micolás Gómez
+- Nicolás Gómez
 - Ana Clara Sena
 - Juan Tanca
 
