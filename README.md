@@ -60,10 +60,13 @@ La función `realizar_respaldo` muestra la lista de usuarios que no tienen respa
 1. **Crear el grupo "ParteA"**: Utilizando el comando `net localgroup` para crear un grupo llamado "ParteA" y agregar a los usuarios que desees.
 ```bash
 net localgroup ParteA /add
-net localgroup ParteA Contaduria Soporte Recepcion RelacionesPublicas
+net localgroup ParteA Contaduria /add
+net localgroup ParteA Soporte /add
+net localgroup ParteA Recepcion /add
+net localgroup ParteA RelacionesPublicas /add
 ```
-
+![alt text](image.png)
 
 2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
 
-Utilizamos la biblioteca `getpass` para obtener el nombre de usuario actual y luego verificar si pertenece al grupo "ParteA" utilizando la biblioteca `win32security`.
+Utilizamos la biblioteca `getpass` para obtener el nombre de usuario actual y luego verificar si pertenece al grupo "ParteA" utilizando la biblioteca `win32net`.
