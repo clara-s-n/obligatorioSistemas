@@ -48,3 +48,22 @@ La función `realizar_respaldo` muestra la lista de usuarios que no tienen respa
 4. **Seguridad**: La función `get_users` utiliza la biblioteca `win32net` para obtener la lista de usuarios, lo que reduce el riesgo de seguridad al no tener que preocuparse por acceder directamente a la información del sistema operativo.
 5. **Portabilidad**: El uso de bibliotecas como `psutil` y `datetime` hace que el código sea portable entre diferentes sistemas operativos.
 6. **Legibilidad**: El código es fácil de leer y entender, lo que facilita la mantenibilidad y el debugging.
+
+## Configuración de permisos
+**Requisito:**
+
+1. Los usuarios creados en la Parte A deben tener un grupo específico, en este caso, "ParteA".
+2. El script debe estar configurado para que solo los usuarios del grupo "ParteA" puedan ejecutarlo.
+
+**Solución:**
+
+1. **Crear el grupo "ParteA"**: Utilizando el comando `net localgroup` para crear un grupo llamado "ParteA" y agregar a los usuarios que desees.
+```bash
+net localgroup ParteA /add
+net localgroup ParteA Contaduria Soporte Recepcion RelacionesPublicas
+```
+
+
+2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
+
+Utilizamos la biblioteca `getpass` para obtener el nombre de usuario actual y luego verificar si pertenece al grupo "ParteA" utilizando la biblioteca `win32security`.

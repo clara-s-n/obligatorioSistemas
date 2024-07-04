@@ -2,8 +2,23 @@ import datetime
 import os
 import win32net
 import win32netcon
-import parteB.scriptDeRespaldo as scriptDeRespaldo
+import scriptDeRespaldo as scriptDeRespaldo
 import psutil
+import getpass
+import sys
+
+# Obtener el nombre de usuario actual
+user_name = getpass.getuser()
+
+# Obtener los grupos a los que pertenece el usuario
+user_info = win32net.NetUserGetLocalGroups(None, user_name)
+
+# Verificar si el usuario pertenece al grupo "ParteA"
+if 'ParteA' in user_info:
+    print("Usuario autorizado.")
+else:
+    print("Este menú solo está disponible para usuarios de la Parte A.")
+    sys.exit()
 
 class User:
     def __init__(self, name, group, last_access, has_backup):
