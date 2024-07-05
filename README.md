@@ -30,6 +30,60 @@ Como se ve en el archivo "configuracionUsuarios.ps1", en la carpeta parteA.1-2, 
 
 ![Captura de pantalla](/parteA.1-2/resultadoConfiguracionDeUsuarios.png)
 
+## Creación de la Carpeta "Comunicados":
+
+Primero, verificamos si la carpeta "Comunicados" existía en el Escritorio del usuario. Si no existía, la creamos.
+Dentro de la carpeta "Comunicados", creamos dos subcarpetas adicionales llamadas "Semanal" y "Mensual".
+
+## Respaldo de la Carpeta "Comunicados":
+
+Realizamos una copia de la carpeta "Comunicados" y su contenido.
+La copia se guardó en una nueva carpeta llamada "Respaldo", ubicada en la raíz del disco principal del equipo.
+Dentro de la carpeta "Respaldo", creamos una subcarpeta con el nombre de la fecha en que se realizó el respaldo (por ejemplo, 29FEB2024).
+La copia de la carpeta "Comunicados" se guardó dentro de esta subcarpeta con la fecha.
+
+![Captura de pantalla](/parteA.3/resultadoScriptGestionYRespaldo.png)
+
+## Creación del Script de Procesos:
+
+Se define la ruta y el nombre del script PowerShell: C:\Scripts\MonitorProcesos.ps1.
+Se verifica si el directorio C:\Scripts existe. Si no, se crea.
+
+Creación de la Carpeta PROCESOS:
+
+Si la carpeta C:\PROCESOS no existe, se crea.
+
+Obtención de los Procesos que Más CPU Consumen:
+
+Se listan los 10 procesos que más CPU consumen, ordenados de mayor a menor.
+
+Registro del Listado de Procesos:
+
+Se genera una marca de tiempo (\$timeStamp) y se crea el contenido del log (\$logContent).
+Se añade el contenido del log al archivo especificado (\$logFilePath).
+
+Mostrar el Listado en Pantalla:
+
+Si el usuario logueado es SOPORTE, el listado se muestra en pantalla usando Write-Host.
+
+## Configuración de la Tarea Programada:
+
+Verificación y Eliminación de la Tarea Programada Existente:
+
+Si una tarea programada con el nombre MonitorarProcesosCPU ya existe, se elimina.
+
+Definición de la Acción de la Tarea Programada:
+
+La acción consiste en ejecutar el script PowerShell MonitorProcesos.ps1 utilizando powershell.exe.
+
+Definición de los Triggers de la Tarea Programada:
+
+triggerStartup: Ejecutar la tarea al inicio del sistema operativo.
+
+triggerRepetition: Ejecutar la tarea cada 60 minutos, durante 10 años (RepetitionDuration de 3650 días).
+
+![Captura de pantalla](/parteA.5/resultadoScript2.png)
+
 ---
 # Parte B:
 Versión de python: 3.12.4
