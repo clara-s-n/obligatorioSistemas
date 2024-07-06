@@ -152,10 +152,32 @@ net localgroup ParteA Soporte /add
 net localgroup ParteA Recepcion /add
 net localgroup ParteA RelacionesPublicas /add
 ```
-![Alt text](/parteB/image.png)
+![Alt text](/parteB/images/grupoLocal.png)
 
 2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
 
 Utilizamos la biblioteca `getpass` para obtener el nombre de usuario actual y luego verificar si pertenece al grupo "ParteA" utilizando la biblioteca `win32net`.
 
 ### Imagenes del menú:
+
+Menú no disponible:
+
+![](/parteB/images/noDisponible.png)
+
+**Disclaimer: para las siguientes imagenes le sacamos el chequeo al principio del archivo "main.py" que se encuentra en la carpeta "parteB"**
+
+1. Listar usuarios:
+
+![listarUsuarios.png](/parteB/images/listarUsuarios.png)
+
+2. Consultar procesos:
+
+![consultarProcesos.png](/parteB/images/consultarProcesos.png)
+
+ - Datos de un proceso y opciones (eliminar o pausar): 
+
+  ![consultarProcesos2.png](/parteB/images/consultarProcesos2.png)
+
+3. Backup no permitido (porque el usuario no es uno de los permitidos):
+
+![backupNoPermitido.png](/parteB/images/backupNoPermitido.png)
