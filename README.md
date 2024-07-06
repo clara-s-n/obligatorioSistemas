@@ -10,6 +10,9 @@
 - Ana Clara Sena
 - Juan Tanca
 
+## Defensa: 
+[Presentación utilizada](https://www.canva.com/design/DAGJ71djdUo/MJ06vZfpUI11UZI6A-FI-g/view?utm_content=DAGJ71djdUo&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
 ---
 A partir de la consigna asignada, elaboramos soluciones según lo que se solicitaba siguiendo los conocimientos aprendidos en clase durante todo este semestre.  
 
@@ -154,3 +157,5 @@ net localgroup ParteA RelacionesPublicas /add
 2. **Configurar el script para autenticar usuarios**: Modificamos el script para que verifique si el usuario actual pertenece al grupo "ParteA" antes de permitir que ejecute el script.
 
 Utilizamos la biblioteca `getpass` para obtener el nombre de usuario actual y luego verificar si pertenece al grupo "ParteA" utilizando la biblioteca `win32net`.
+
+### Imagenes del menú:
