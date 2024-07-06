@@ -123,9 +123,9 @@ La función `main` es el punto de entrada del programa. Inicializa el menú prin
 
 La función `list_users` muestra la lista de usuarios del sistema y permite al usuario elegir una opción para mostrar más información sobre los usuarios o regresar al menú principal.
 
-La función `consult_procesos` muestra la lista de procesos actuales y permite al usuario elegir un proceso para mostrar más información o regresar al menú principal.
+La función `consult_processes` muestra la lista de procesos actuales y permite al usuario elegir un proceso para mostrar más información o regresar al menú principal.
 
-La función `realizar_respaldo` muestra la lista de usuarios que no tienen respaldo y permite al usuario elegir uno para realizar el respaldo.
+La función `do_backup` muestra la lista de usuarios que no tienen respaldo y permite al usuario elegir uno para realizar el respaldo.
 
 **Por qué es buena idea hacerlo así**
 
